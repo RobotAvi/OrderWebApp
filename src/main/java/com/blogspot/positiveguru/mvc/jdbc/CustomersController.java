@@ -1,7 +1,6 @@
 package com.blogspot.positiveguru.mvc.jdbc;
 
-
-import com.blogspot.positiveguru.mvc.bean.User;
+import com.blogspot.positiveguru.mvc.bean.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,16 +10,19 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class JDBCController {
+public class CustomersController {
 
     @Autowired
-    JDBCExample jdbcExample;
+    Customers customers;
 
-    @RequestMapping(value = "/jdbcQueryAllUsers", method = RequestMethod.GET)
-    public ModelAndView jdbcSelectAllUsers() {
+    @RequestMapping(value = "/jdbcQueryAllCustomers", method = RequestMethod.GET)
+    public ModelAndView jdbcSelectAllCustomers() {
         System.out.println("Called jdbcSelectAllUsers()");
-        List<User> users = jdbcExample.queryAllUsers();
-        return new ModelAndView("/jdbc/jdbc", "resultObject", users);
+        List<Customer> customerList = customers.queryAllCustomers();
+        return new ModelAndView("/jdbc/jdbc", "resultObject", customerList);
     }
+
+
+
 
 }
