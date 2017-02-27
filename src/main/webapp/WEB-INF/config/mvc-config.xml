@@ -14,6 +14,14 @@
          and also resolves @Autowired and @Qualifier -->
     <context:component-scan base-package="com.blogspot.positiveguru.mvc" />
 
+    <!--
+        mvc:annotation-driven configures Spring MVC annotations
+        Support for validating @Controller inputs with @Valid, if a JSR-303 Provider is present on the classpath.
+        HttpMessageConverter support for @RequestBody method parameters and @ResponseBody method return values
+        from @RequestMapping or @ExceptionHandler methods.
+     -->
+    <mvc:annotation-driven/>
+
 
     <!-- ViewResolver bean config for mapping strings to jsp views -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -23,8 +31,8 @@
     </bean>
 
 
-    <mvc:view-controller path="/index.html" view-name="/index"/>
-    <mvc:view-controller path="/jdbc.html" view-name="/jdbc/jdbc"/>
+    <mvc:view-controller path="/index" view-name="/index"/>
+    <mvc:view-controller path="/jdbc" view-name="/jdbc/jdbc"/>
 
     <!-- Static Resources Configuration (get access to static sources such as CSS and JavaScript files) -->
     <mvc:resources mapping="/resources/**" location="/resources/" />

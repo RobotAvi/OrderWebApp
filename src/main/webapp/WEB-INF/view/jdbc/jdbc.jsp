@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="page" tagdir="/WEB-INF/tags" %>
 
 <page:template>
     <jsp:body>
-        <c:url value="/jdbcQueryAllUsers" var="jdbcQueryAllUsers"/>
+        <c:url value="/jdbcQueryAllUsers" var="jdbcQueryAllUsers" />
+        <c:url value="/jdbcInsert" var="jdbcInsert" />
+        <c:url value="/jdbcSelectLogs" var="jdbcSelectLogs" />
+        <c:url value="/jdbcDelete" var="jdbcDelete" />
+        <c:url value="/jdbcUpdate" var="jdbcUpdate" />
 
         <!-- Page Content -->
         <div class="container">
@@ -34,6 +38,10 @@
 
                         <a href="index.html" class="list-group-item">Home</a>
                         <a href="${jdbcQueryAllUsers}" class="list-group-item">get all users</a>
+                        <a href="${jdbcInsert}/logstring/jdbcTestLogString" class="list-group-item">Jdbc insert</a>
+                        <a href="${jdbcSelectLogs}" class="list-group-item">Select all Logs</a>
+                        <a href="${jdbcDelete}/user/8" class="list-group-item">Delete User</a>
+                        <a href="${jdbcUpdate}/user/username/user@javastudy.ru/enabled/false" class="list-group-item">Update User</a>
                     </div>
                 </div>
                 <!-- Content Column -->
@@ -51,7 +59,7 @@
                         </c:if>
                     </c:if>
                 </div>
-
+                </form>
             </div>
             <!-- /.row -->
 
@@ -62,3 +70,4 @@
 
     </jsp:body>
 </page:template>
+
