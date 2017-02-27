@@ -30,15 +30,13 @@ public class Customers implements CustomersDAOInterface {
 
     public List<Customer> queryAllCustomers() {
         System.out.println("Customers: queryAllCustomers is called");
-        final String QUERY_SQL = "SELECT * FROM Customer ORDER BY IDCustomer";
-        List<Customer> CustomerList = this.jdbcTemplate.query(QUERY_SQL, new RowMapper<Customer>() {
-            public Customer mapRow(ResultSet resulSet, int rowNum) throws SQLException {
-                Customer Customer = new Customer();
-                Customer.setIdCustomer(resulSet.getInt("IDCustomer"));
-                Customer.setCustomerName(resulSet.getString("CustomerNAME"));
-                Customer.setDescription(resulSet.getString("Description"));
-                return Customer;
-            }
+        final String QUERY_SQL = "SELECT * FROM Customers ORDER BY IDCustomer";
+        List<Customer> CustomerList = this.jdbcTemplate.query(QUERY_SQL, (resultSet, rowNum) -> {
+            Customer Customer = new Customer();
+            Customer.setIdCustomer(resultSet.getInt("IDCustomer"));
+            Customer.setCustomerName(resultSet.getString("CustomerNAME"));
+            Customer.setDescription(resultSet.getString("Description"));
+            return Customer;
         });
         return CustomerList;
     }
@@ -61,7 +59,7 @@ public class Customers implements CustomersDAOInterface {
     @Override
     public int removeCustomer(int idCustomer) {
         System.out.println("Customers: queryAllCustomers is called");
-        final String DELETE_SQL = "DELETE * FROM Customer WHERE IDCustomer=?";
+        final String DELETE_SQL = "DELETE * FROM Customers WHERE IDCustomer=?";
         int result = this.jdbcTemplate.update(DELETE_SQL, new Object[]{idCustomer} );
 
         return result;

@@ -1,7 +1,7 @@
 package com.blogspot.positiveguru.mvc.jdbc;
 
-import com.blogspot.positiveguru.mvc.bean.Customer;
-import com.blogspot.positiveguru.mvc.dao.Customers;
+import com.blogspot.positiveguru.mvc.bean.Order;
+import com.blogspot.positiveguru.mvc.dao.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,13 +14,13 @@ import java.util.List;
 public class OrdersController {
 
     @Autowired
-    Customers customers;
+    Orders corders;
 
     @RequestMapping(value = "/jdbcQueryAllOrders", method = RequestMethod.POST)
-    public ModelAndView jdbcSelectAllCustomers() {
+    public ModelAndView jdbcSelectAllOrders() {
         System.out.println("Called jdbcQueryAllOrders()");
-        List<Customer> customerList = customers.queryAllCustomers();
-        return new ModelAndView("/jdbc/Orders", "resultObject", customerList);
+        List<Order> corderList = corders.queryAllOrders();
+        return new ModelAndView("/jdbc/Orders", "resultObject", corderList);
     }
 
 
