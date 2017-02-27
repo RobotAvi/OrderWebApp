@@ -1,12 +1,10 @@
-package com.blogspot.positiveguru.mvc.jdbc;
+package com.blogspot.positiveguru.mvc.dao;
 
 import com.blogspot.positiveguru.mvc.bean.Customer;
 
 import java.util.List;
 
-/**
- * Created by aveni on 2/27/2017.
- */
+
 public interface CustomersDAOInterface {
 
     List<Customer> queryAllCustomers();

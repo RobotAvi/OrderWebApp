@@ -10,6 +10,17 @@
         <c:url value="/jdbcQueryAllGifts" var="jdbcQueryAllGifts"/>
         <c:url value="/jdbcQueryAllOrders" var="jdbcQueryAllOrders"/>
 
+        <script type="text/javascript">
+            function refresh(idElement) {
+                   $.ajax({
+                        type: 'POST',
+                        url: '/' + idElement,
+                        success: function (result) {
+                            $('#resultDev').html(result);
+                        }
+                    });
+            }
+        </script>
         <!-- Page Content -->
         <div class="container">
 
@@ -34,40 +45,14 @@
                 <div class="col-md-3">
                     <div class="list-group">
 
-                        <a href="${jdbcQueryAllCustomers}" class="list-group-item">Customers</a>
-                        <a href="${jdbcQueryAllGifts}" class="list-group-item">Gifts</a>
-                        <a href="${jdbcQueryAllOrders}" class="list-group-item">Orders</a>
+                        <a id="jdbcQueryAllCustomers" class="list-group-item" onclick=refresh(this.id)>Customers</a>
+                        <a id="jdbcQueryAllGifts" class="list-group-item" onclick=refresh(this.id)>Gifts</a>
+                        <a id="jdbcQueryAllOrders" class="list-group-item" onclick=refresh(this.id)>Orders</a>
 
                     </div>
                 </div>
                 <!-- Content Column -->
-                <div class="col-md-9">
-
-
-                    <table class="table">
-                        <caption><h2>List of customers</h2></caption>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                        </tr>
-                        <c:if test="${not empty resultObject}">
-                            <c:forEach items="${resultObject}" var="name">
-                                <tr>
-                                    <td><c:out value="${name.idCustomer}"/></td>
-                                    <td><c:out value="${name.customerName}"/></td>
-                                    <td><c:out value="${name.description}"/></td>
-
-                                </tr>
-                            </c:forEach>
-                        </c:if>
-                    </table>
-                    <c:if test="${empty resultObject}">
-                            No rows
-                    </c:if>
-
-
-                </div>
+                <div id="resultDev" class="col-md-9"/>
 
             </div>
             <!-- /.row -->

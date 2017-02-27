@@ -1,4 +1,4 @@
-package com.blogspot.positiveguru.mvc.jdbc;
+package com.blogspot.positiveguru.mvc.dao;
 
 
 
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class Customers implements CustomersDAOInterface{
+public class Customers implements CustomersDAOInterface {
 
     @Autowired
     DataSource dataSource;

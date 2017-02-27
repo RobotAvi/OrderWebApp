@@ -11,16 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-public class CustomersController {
+public class GiftsController {
 
     @Autowired
     Customers customers;
 
-    @RequestMapping(value = "/jdbcQueryAllCustomers", method = RequestMethod.POST)
+    @RequestMapping(value = "/jdbcQueryAllGifts", method = RequestMethod.POST)
     public ModelAndView jdbcSelectAllCustomers() {
-        System.out.println("Called jdbcSelectAllUsers()");
+        System.out.println("Called jdbcQueryAllGifts()");
         List<Customer> customerList = customers.queryAllCustomers();
-        return new ModelAndView("/jdbc/Customers", "resultObject", customerList);
+        return new ModelAndView("/jdbc/Gifts", "resultObject", customerList);
     }
 
 

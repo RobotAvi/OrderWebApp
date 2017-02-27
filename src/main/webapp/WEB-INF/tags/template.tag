@@ -30,6 +30,9 @@
     <spring:url value="/resources/js/bootstrap.min.js" var="js"/>
     <script src="${js}"></script>
 
+
+
+
 </head>
 
 <body>
