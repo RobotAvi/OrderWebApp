@@ -23,7 +23,7 @@
     <link href="${fontawesome}" rel="stylesheet"/>
 
     <!-- jQuery -->
-    <spring:url value="/resources/js/jquery.js" var="jqueryjs"/>
+    <spring:url value="/resources/js/jquery-3.1.1.min.js" var="jqueryjs"/>
     <script src="${jqueryjs}"></script>
 
     <!-- Bootstrap Core JavaScript -->

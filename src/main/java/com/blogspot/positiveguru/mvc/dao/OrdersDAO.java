@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Repository
-public class Orders implements OrdersDAOInterface {
+public class OrdersDAO implements OrdersDAOInterface {
 
     @Autowired
     DataSource dataSource;
@@ -29,13 +29,19 @@ public class Orders implements OrdersDAOInterface {
 
     public List<Order> queryAllOrders() {
         System.out.println("Orders: queryAllOrders is called");
-        final String QUERY_SQL = "SELECT * FROM Orders ORDER BY IDOrder";
+        final String QUERY_SQL = "SELECT o.IDORDER, o.idCustomer, o.idGift, o.orderCount, c.CustomerName, g.giftName " +
+                "FROM Orders o " +
+                "INNER JOIN gifts g ON g.idgift=o.idgift " +
+                "INNER JOIN customers c ON c.idcustomer=o.idgift;";
+
         List<Order> OrderList = this.jdbcTemplate.query(QUERY_SQL, (resultSet, rowNum) -> {
             Order Order = new Order();
             Order.setIdOrder(resultSet.getInt("IDOrder"));
             Order.setIdCustomer(resultSet.getInt("IdCustomer"));
             Order.setIdGift(resultSet.getInt("IdGift"));
             Order.setOrderCount(resultSet.getInt("ORDERCOUNT"));
+            Order.setCustomerName(resultSet.getString("CustomerName"));
+            Order.setGiftName(resultSet.getString("giftName"));
             return Order;
         });
         return OrderList;

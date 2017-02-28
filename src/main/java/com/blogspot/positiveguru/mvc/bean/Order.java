@@ -7,6 +7,24 @@ public class Order {
     private int idGift;
     private int idCustomer;
     private int orderCount;
+    private String customerName;
+    private String giftName;
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getGiftName() {
+        return giftName;
+    }
+
+    public void setGiftName(String giftName) {
+        this.giftName = giftName;
+    }
 
     public int getIdOrder() {
         return idOrder;
